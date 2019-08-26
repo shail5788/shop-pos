@@ -5,6 +5,8 @@ const morgan = require("morgan");
 const authHelper = require("./controllers/authController");
 
 const userRoute = require("./routes/user");
+const categoryRoute = require("./routes/category");
+const productRoute = require("./routes/product");
 if (process.env.NODE_ENV == "development") {
   app.use(morgan("dev"));
 }
@@ -18,5 +20,7 @@ app.post("/signup", authHelper.signUp);
 app.post("/signin", authHelper.login);
 
 app.use("/api/v1/user", userRoute);
+app.use("/api/v1/category", categoryRoute);
+app.use("/api/v1/product", productRoute);
 
 module.exports = app;
